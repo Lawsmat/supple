@@ -1,13 +1,15 @@
+import { ChakraProvider } from '@chakra-ui/react';
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from "@stripe/stripe-js";
 
 import '../styles/globals.css'
-
-const promise = loadStripe("<insert key>");
+const promise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 function MyApp({ Component, pageProps }) {
   return <Elements stripe={promise}>
-    <Component {...pageProps} />
+    <ChakraProvider>
+      <Component {...pageProps} />
+    </ChakraProvider>
   </Elements>
 }
 
