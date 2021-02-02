@@ -1,2 +1,4 @@
 # supple
- block game store with stripe
+A block game store with stripe
+
+Built with nextjs
