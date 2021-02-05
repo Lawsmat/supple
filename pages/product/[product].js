@@ -5,8 +5,8 @@ import { useStripe } from "@stripe/react-stripe-js";
 import useSWR from "swr";
 
 export default function ProductPage() {
-    const { data, error } = useSWR("/api/purchase", fetcher)
     const router = useRouter()
+    const { data, error } = useSWR("/api/purchase/" + router.query.product, fetcher)
     const stripe = useStripe()
     const [loading, setLoading] = useState(false)
     return <Flex h="100vh" w="100vw" justify="center" align="center" bg="gray.100">
