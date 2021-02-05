@@ -1,5 +1,6 @@
 import Stripe from "stripe"
 import productList from "../../../lib/productList";
+import config from "../../../user/config";
 const stripe = new Stripe(process.env.STRIPE_PRIVATE)
 
 /**
@@ -42,8 +43,8 @@ export default async (req,res) => {
       username: "MoonBarc"
     },
     mode: 'payment',
-    success_url: "http://localhost:3000/complete",
-    cancel_url: 'https://example.com/cancel',
+    success_url: `${config.technical.baseUrl}/complete`,
+    cancel_url: `${config.technical.baseUrl}/product/${product.id}`,
   });
 
   res.json({ id: session.id });

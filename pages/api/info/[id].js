@@ -1,5 +1,5 @@
 import Stripe from "stripe"
-import productList from "../../lib/productList"
+import productList from "../../../lib/productList"
 const stripe = new Stripe(process.env.STRIPE_PRIVATE)
 
 /**
@@ -15,5 +15,10 @@ export default async function(req,res) {
             description: e.description
         })
     })
-    res.json(publicFacing)
+    var prod = publicFacing.filter(d => d.id == req.query.id)[0]
+    if(prod) {
+        res.json(prod)
+    }else{
+        res.status(404).send()
+    }
 }

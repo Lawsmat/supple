@@ -1,3 +1,7 @@
-export default function Break() {
-    return <div style={{flexBasis:"100%",height:0}}/>
+import { motion } from "framer-motion";
+
+export default function SmoothTransition() {
+    return <motion.div style={}>
+
+    </motion.div>
 }
